@@ -10,6 +10,7 @@ function onAlertMessage(event) {
 
   if (email === "" || password === "") {
     alert("Всі поля повинні бути заповнені");
+    return;
   }
 
   const formData = {

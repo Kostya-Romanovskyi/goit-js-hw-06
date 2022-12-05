@@ -2,25 +2,28 @@ const controlsEl = document.getElementById("controls");
 const boxesEl = document.getElementById("boxes");
 
 const createBtn = document.querySelector("button[data-create]");
-// createBtn.dataset.value = Number(amount);
-
-// amount = controlsEl.firstElementChild.value;
+const removeBtn = document.querySelector("button[data-destroy]");
 
 createBtn.addEventListener("click", createBoxes);
-// controlsEl.children[1].addEventListener("click", createBoxes);
-const collections = [];
-console.log(collections);
+removeBtn.addEventListener("click", destroyBoxes);
 
-function createBoxes(amount) {
-  const block = document.createElement("div");
-  block.style.width = "30px";
-  block.style.height = "30px";
-  block.style.backgroundColor = getRandomHexColor();
-  collections.push(block);
+function createBoxes() {
+  const inputValue = controlsEl.firstElementChild.value;
+  for (let i = 1; i <= inputValue; i += 1) {
+    const blocks = document.createElement("div");
 
-  console.log((amount = controlsEl.firstElementChild.value));
+    blocks.style.width = "30px";
+    blocks.style.height = "30px";
+    blocks.style.backgroundColor = getRandomHexColor();
 
-  boxesEl.appendChild(block);
+    boxesEl.append(blocks);
+  }
+}
+
+function destroyBoxes() {
+  while (boxesEl.firstChild) {
+    boxesEl.removeChild(boxesEl.firstChild);
+  }
 }
 
 function getRandomHexColor() {
