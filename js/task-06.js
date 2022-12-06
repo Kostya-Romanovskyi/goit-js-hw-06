@@ -4,21 +4,8 @@ validInput.addEventListener("blur", onValidLength);
 
 function onValidLength(event) {
   if (event.currentTarget.value.length === Number(validInput.dataset.length)) {
-    validInput.classList.add("valid");
-  }
-  if (
-    event.currentTarget.value.length > Number(validInput.dataset.length) ||
-    event.currentTarget.value.length < Number(validInput.dataset.length)
-  ) {
-    validInput.classList.remove("valid");
-  }
-  if (
-    event.currentTarget.value.length > Number(validInput.dataset.length) ||
-    event.currentTarget.value.length < Number(validInput.dataset.length)
-  ) {
-    validInput.classList.add("invalid");
-  }
-  if (event.currentTarget.value.length === Number(validInput.dataset.length)) {
-    validInput.classList.remove("invalid");
+    validInput.classList.add("valid"), validInput.classList.remove("invalid");
+  } else {
+    validInput.classList.remove("valid"), validInput.classList.add("invalid");
   }
 }
